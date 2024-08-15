@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adopt a Dog/Cat</title>
+    <link rel="stylesheet" href="/stylesheets/Cat-Stylesheet.css">
+    <script src="/scripts/adoptPet.js" defer></script>
+</head>
+<body>
+
+<div class="container">
+    <!-- Display user's name if logged in -->
+    <% if (user) { %>
+        <div class="header">
+            <p>Welcome, <%= user %>!</p>
+        </div>
+    <% } %>
+
+    <%- include('header') %>
+
+    <main>
+        <div class="menu">
+            <ul>
+                <li class="active"><a href="/">Home page</a></li>
+                <li><a href="/findDogCat">Find a dog/cat</a></li>
+                <li><a href="/dogCare">Dog Care</a></li>
+                <li><a href="/catCare">Cat Care</a></li>
+
+                <!-- Conditional give away link -->
+                <% if (user) { %>
+                    <li><a href="/giveAway">Have a pet to give away</a></li>
+                <% } else { %>
+                    <li><a href="/login">Have a pet to give away</a></li>
+                <% } %>
+
+                <li><a href="/contactUs">Contact Us</a></li>
+
+                <!-- Conditional Create an Account link -->
+                <% if (!user) { %>
+                    <li><a href="/register">Create an account</a></li>
+                <% } %>
+
+                <!-- Conditional login/logout button -->
+                <% if (user) { %>
+                    <li><a href="/logout" style="color: red;">Logout</a></li>
+                <% } else { %>
+                    <li><a href="/login">Login</a></li>
+                <% } %>
+            </ul>
+        </div>
+        <div class="contactus">
+            <h1>Contact Us</h1>
+            <p>
+                If you have any questions or concerns, please reach out to us using the following contact information:
+            </p>
+            <p>
+                <strong>Address:</strong> Montreal,QC,Canada
+            </p>
+            <p>
+                <strong>Phone:</strong> (579) 421-9222
+            </p>
+            <p>
+                <strong>Email:</strong> rojannessari@gmail.com
+            </p>
+            <p>
+                <strong>Student ID:</strong> 40255637
+            </p>
+            <p>
+                We look forward to hearing from you!
+            </p>
+        </div>
+    </main>
+
+    <%- include('footer')%>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homepage</title>
+    <link rel="stylesheet" href="/stylesheets/Cat-Stylesheet.css">
+    <script src="/scripts/adoptPet.js" defer></script>
+</head>
+<body>
+
+<div class="container">
+    <!-- Display user's name if logged in -->
+    <% if (user) { %>
+        <div class="header">
+            <p>Welcome, <%= user %>!</p>
+        </div>
+    <% } %>
+
+    <%- include('header') %>
+
+    <main>
+        <div class="menu">
+            <ul>
+                <li class="active"><a href="/">Home page</a></li>
+                <li><a href="/findDogCat">Find a dog/cat</a></li>
+                <li><a href="/dogCare">Dog Care</a></li>
+                <li><a href="/catCare">Cat Care</a></li>
+
+                <!-- Conditional give away link -->
+                <% if (user) { %>
+                    <li><a href="/giveAway">Have a pet to give away</a></li>
+                <% } else { %>
+                    <li><a href="/login">Have a pet to give away</a></li>
+                <% } %>
+
+                <li><a href="/contactUs">Contact Us</a></li>
+
+                <!-- Conditional Create an Account link -->
+                <% if (!user) { %>
+                    <li><a href="/register">Create an account</a></li>
+                <% } %>
+
+                <!-- Conditional login/logout button -->
+                <% if (user) { %>
+                    <li><a href="/logout" style="color: red;">Logout</a></li>
+                <% } else { %>
+                    <li><a href="/login">Login</a></li>
+                <% } %>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h3>Change a life</h3>
+            <h1>Adopt Love</h1>
+            <img id="photo" src="/photo/background.png" alt="adoption photo"/>
+            <a href="https://pngtree.com/freepng/animal-shelter-illustration-good-hearted-people-adopting-pets_6413558.html">Picture Link</a>
+            <p>Welcome to Paw Print, your gateway to finding the perfect furry companion. At Paw Print, we believe in connecting loving homes with adorable cats and dogs in need. Whether you're looking for a playful puppy to brighten your days or a cuddly kitten to warm your heart, our website offers a variety of adoptable pets just waiting to be welcomed into loving families.
+                Browse through our listings, each featuring detailed profiles and heartwarming stories, to find your new best friend. With our easy adoption process
+                and dedicated support, Paw Print is here to make your adoption journey as
+                joyful and seamless as possible. Join us in giving these wonderful animals a second chance at happiness and unconditional love. Start your journey with Paw Print today and discover the rewarding experience of pet adoption.</p>
+        </div>
+    </main>
+
+    <%- include('footer') %>
+</div>
+
+</body>
+</html>

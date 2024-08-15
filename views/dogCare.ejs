@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adopt a Dog/Cat</title>
+    <link rel="stylesheet" href="/stylesheets/Cat-Stylesheet.css">
+    <script src="/scripts/adoptPet.js" defer></script>
+</head>
+<body>
+
+<div class="container">
+    <!-- Display user's name if logged in -->
+    <% if (user) { %>
+        <div class="header">
+            <p>Welcome, <%= user %>!</p>
+        </div>
+    <% } %>
+
+    <%- include('header') %>
+
+    <main>
+        <div class="menu">
+            <ul>
+                <li class="active"><a href="/">Home page</a></li>
+                <li><a href="/findDogCat">Find a dog/cat</a></li>
+                <li><a href="/dogCare">Dog Care</a></li>
+                <li><a href="/catCare">Cat Care</a></li>
+
+                <!-- Conditional give away link -->
+                <% if (user) { %>
+                    <li><a href="/giveAway">Have a pet to give away</a></li>
+                <% } else { %>
+                    <li><a href="/login">Have a pet to give away</a></li>
+                <% } %>
+
+                <li><a href="/contactUs">Contact Us</a></li>
+
+                <!-- Conditional Create an Account link -->
+                <% if (!user) { %>
+                    <li><a href="/register">Create an account</a></li>
+                <% } %>
+
+                <!-- Conditional login/logout button -->
+                <% if (user) { %>
+                    <li><a href="/logout" style="color: red;">Logout</a></li>
+                <% } else { %>
+                    <li><a href="/login">Login</a></li>
+                <% } %>
+            </ul>
+        </div>
+        <div  class="Care">
+            <h1>Dog care </h1>
+            <section>
+                <h2> General Instructionsn </h2>
+                <p>
+                    Taking care of a dog involves regular exercise, a balanced diet, routine veterinary visits, and lots of love and attention. Here are some essential tips:
+                </p>
+                <ul>
+                    <li>Provide a nutritious diet that is appropriate for your dog's age, size, and health condition. <br><a href="https://www.akc.org/expert-advice/nutrition/pet-food-digestibility/">Read more about dog nutrition here</a>.</li>
+                    <li>Ensure your dog gets regular exercise to maintain a healthy weight and mental stimulation.<br> <a href="https://www.cesarsway.com/dog-training/tips/basic-exercise-needs">Learn about dog exercise needs</a>.</li>
+                    <li>Take your dog for routine veterinary check-ups to keep vaccinations up to date and monitor health. <br><a href="https://www.aspca.org/news/routine-care-keep-your-right-horse-right-rain">More about veterinary care</a>.</li>
+                    <li>Provide regular grooming to keep your dog's coat healthy and reduce shedding.<br> <a href="https://www.akc.org/expert-advice/grooming/">Dog grooming tips</a>.</li>
+                    <li>Ensure your dog is well-trained to follow basic commands and socialize with other pets and people.<br> <a href="https://www.cesarsway.com/dog-training/">Dog training resources</a>.</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Useful Links</h2>
+                <ul>
+                    <li><a href="https://www.akc.org/">American Kennel Club</a></li>
+                    <li><a href="https://www.aspca.org/">ASPCA</a></li>
+                    <li><a href="https://www.cesarsway.com/">Cesar's Way</a></li>
+                    <li><a href="https://www.petmd.com/">PetMD</a></li>
+                </ul>
+            </section>
+
+
+        </div>
+    </main>
+
+    <%- include('footer')%>
+</div>
+
+</body>
+</html>

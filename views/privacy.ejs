@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find Dog/Cat</title>
+    <link rel="stylesheet" href="/stylesheets/Cat-Stylesheet.css">
+    <script src="/scripts/adoptPet.js" defer></script>
+</head>
+<body>
+
+<div class="container">
+    <!-- Display user's name if logged in -->
+    <% if (user) { %>
+        <div class="header">
+            <p>Welcome, <%= user %>!</p>
+        </div>
+    <% } %>
+
+    <%- include('header') %>
+
+    <main>
+        <div class="menu">
+            <ul>
+                <li class="active"><a href="/">Home page</a></li>
+                <li><a href="/findDogCat">Find a dog/cat</a></li>
+                <li><a href="/dogCare">Dog Care</a></li>
+                <li><a href="/catCare">Cat Care</a></li>
+
+                <!-- Conditional give away link -->
+                <% if (user) { %>
+                    <li><a href="/giveAway">Have a pet to give away</a></li>
+                <% } else { %>
+                    <li><a href="/login">Have a pet to give away</a></li>
+                <% } %>
+
+                <li><a href="/contactUs">Contact Us</a></li>
+
+                <!-- Conditional Create an Account link -->
+                <% if (!user) { %>
+                    <li><a href="/register">Create an account</a></li>
+                <% } %>
+
+                <!-- Conditional login/logout button -->
+                <% if (user) { %>
+                    <li><a href="/logout" style="color: red;">Logout</a></li>
+                <% } %>
+            </ul>
+        </div>
+        <div class="privacy">
+            <h1>Privacy/Disclaimer Statement</h1>
+
+            <h3>Privacy Statement:</h3> <p>At Paw Print, we are committed to protecting your privacy and ensuring the security of your personal information.
+                We promise that your information will not be sold, shared, or misused in any way.
+                Our site takes precautions to safeguard your data and operates in compliance with applicable laws and regulations.
+            </p>
+            <h3>Disclaimer:</h3>  <p>Paw Print strives to provide accurate and up-to-date information regarding adoptable pets.
+                However, we cannot guarantee the accuracy or completeness of information provided by pet owners.
+                Users are encouraged to verify details directly with the pet owner or adoption agency.
+            </p>
+        </div>
+    </main>
+
+    <%- include('footer') %>
+</div>
+
+</body>
+</html>

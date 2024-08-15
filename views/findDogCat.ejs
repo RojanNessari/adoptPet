@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find Dog/Cat</title>
+    <link rel="stylesheet" href="/stylesheets/Cat-Stylesheet.css">
+    <script src="/scripts/adoptPet.js" defer></script>
+</head>
+<body>
+
+<div class="container">
+    <!-- Display user's name if logged in -->
+    <% if (user) { %>
+        <div class="header">
+            <p>Welcome, <%= user %>!</p>
+        </div>
+    <% } %>
+
+    <%- include('header') %>
+
+    <main>
+        <div class="menu">
+            <ul>
+                <li class="active"><a href="/">Home page</a></li>
+                <li><a href="/findDogCat">Find a dog/cat</a></li>
+                <li><a href="/dogCare">Dog Care</a></li>
+                <li><a href="/catCare">Cat Care</a></li>
+
+                <!-- Conditional give away link -->
+                <% if (user) { %>
+                    <li><a href="/giveAway">Have a pet to give away</a></li>
+                <% } else { %>
+                    <li><a href="/login">Have a pet to give away</a></li>
+                <% } %>
+
+                <li><a href="/contactUs">Contact Us</a></li>
+
+                <!-- Conditional Create an Account link -->
+                <% if (!user) { %>
+                    <li><a href="/register">Create an account</a></li>
+                <% } %>
+
+                <!-- Conditional login/logout button -->
+                <% if (user) { %>
+                    <li><a href="/logout" style="color: red;">Logout</a></li>
+                <% } %>
+            </ul>
+        </div>
+
+        <!-- Form to Find a Pet -->
+        <div class="formFind">
+            <h1>Find a pet</h1>
+            <form action="/findPets" method="POST">
+                <label>Which type of pet are you looking for?</label><br>
+                <label for="dog">Dog</label>
+                <input name="petType" type="radio" id="dog" value="dog" required>
+                <label for="cat">Cat</label>
+                <input name="petType" type="radio" id="cat" value="cat" required>
+                <br>
+
+                <label for="breed">Please choose the type of Breed:</label>
+                <select id="breed" name="breed" required>
+                    <option value="noMatter">Doesn't matter</option>
+                    <!-- Breed options will be populated by JavaScript -->
+                </select>
+                <br>
+
+                <label for="age">Please choose the age:</label>
+                <select id="age" name="age" required>
+                    <option value="noMatter">Doesn't matter</option>
+                    <option value="puppy/kitten">Puppy/Kitten</option>
+                    <option value="young">Young</option>
+                    <option value="adult">Adult</option>
+                    <option value="senior">Senior</option>
+                </select>
+                <br>
+
+                <label>Please choose the gender from the following options:</label>
+                <label><input type="radio" name="gender" value="Male" required> Male</label>
+                <label><input type="radio" name="gender" value="Female" required> Female</label>
+                <label><input type="radio" name="gender" value="Any Gender" required> Any Gender</label>
+                <br>
+
+                <label for="otherDog">Gets along with other dogs/cats/small children:</label>
+                <select id="otherDog" name="otherDog" required>
+                    <option value="noMatter">Doesn't matter</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <div class="button">
+                    <button type="submit">Submit</button>
+                    <button type="reset">Clear</button>
+                </div>
+                <div id="error-message" class="error"></div>
+            </form>
+        </div>
+
+        <!-- Display Available Pets -->
+        <% if (pets.length > 0) { %>
+            <div class="petAvailable">
+                <h1>Available Pets for Adoption</h1>
+                <div class="pet-list">
+                    <% pets.forEach(pet => { %>
+                        <div class="pet-item">
+                            <img src="<%= pet.imagePath %>" alt="<%= pet.breed %>">
+                            <div class="pet-info">
+                                <h2><%= pet.breed %></h2>
+                                <p>Age: <%= pet.age %></p>
+                                <p>Gender: <%= pet.gender %></p>
+                                <p>Other Info: <%= pet.otherInfo %></p>
+                                <span>Interested <img src="/photo/heart.png" class="interested-button" alt="Interested" onclick="toggleHeart(this)"></span>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        <% } else { %>
+            <p>No pets found matching your criteria.</p>
+        <% } %>
+
+    </main>
+
+    <%- include('footer') %>
+</div>
+<script>
+    function toggleHeart(element) {
+        // Check if the heart is already red (clicked)
+        if (element.classList.contains('clicked')) {
+            element.classList.remove('clicked');
+            element.src = '../public/photo/heart.png'; // Path to the default heart image
+        } else {
+            element.classList.add('clicked');
+            element.src = '../public/photo/heartRed.png'; // Path to the red heart image
+        }
+    }
+</script>
+</body>
+</html>

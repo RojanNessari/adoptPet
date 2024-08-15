@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Give Away a Pet</title>
+    <link rel="stylesheet" href="/stylesheets/Cat-Stylesheet.css">
+    <script src="/scripts/adoptPet.js" defer></script>
+</head>
+<body>
+<div class="container">
+    <!-- Display user's name if logged in -->
+    <% if (user) { %>
+        <div class="header">
+            <p>Welcome, <%= user %>!</p>
+        </div>
+    <% } %>
+
+    <%- include('header') %>
+
+    <main>
+        <div class="menu">
+            <ul>
+                <li class="active"><a href="/">Home page</a></li>
+                <li><a href="/findDogCat">Find a dog/cat</a></li>
+                <li><a href="/dogCare">Dog Care</a></li>
+                <li><a href="/catCare">Cat Care</a></li>
+
+                <!-- Conditional give away link -->
+                <% if (user) { %>
+                    <li><a href="/giveAway">Have a pet to give away</a></li>
+                <% } else { %>
+                    <li><a href="/login">Have a pet to give away</a></li>
+                <% } %>
+
+                <li><a href="/contactUs">Contact Us</a></li>
+
+                <!-- Conditional Create an Account link -->
+                <% if (!user) { %>
+                    <li><a href="/register">Create an account</a></li>
+                <% } %>
+
+                <!-- Conditional login/logout button -->
+                <% if (user) { %>
+                    <li><a href="/logout" style="color: red;">Logout</a></li>
+                <% } %>
+            </ul>
+        </div>
+
+        <div class="giveaway">
+            <h1>Have a Pet</h1>
+            <h2>to Give Away</h2>
+            <form action="/giveAway" method="POST" id="giveAwayForm">
+
+                <label>Which type of pet do you want to give away ?</label><br>
+                <label for="dog">Dog</label>
+                <input name="petType" type="radio" id="dog" value="dog" required>
+                <label for="cat">Cat</label>
+                <input name="petType" type="radio" id="cat" value="cat" required>
+                <br>
+
+                <label for="breed">Please choose the type of Breed:</label>
+                <select id="breed" name="breed" required>
+                    <option value="noMatter">select breed</option>
+                    <!-- Breed options will be populated by JavaScript -->
+                </select>
+                <br>
+
+                <label for="age">Age:</label>
+                <select id="age" name="age">
+                    <option value="">Select an age range</option>
+                    <option value="puppy/kitten">Puppy/Kitten</option>
+                    <option value="young">Young</option>
+                    <option value="adult">Adult</option>
+                    <option value="senior">Senior</option>
+                </select>
+                <br>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="">Select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <br>
+
+                <label for="otherDogs">Gets along with other dogs:</label>
+                <select id="otherDogs" name="otherDogs">
+                    <option value="">Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+                <br>
+
+                <label for="otherCats">Gets along with other cats:</label>
+                <select id="otherCats" name="otherCats">
+                    <option value="">Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+                <br>
+
+                <label for="smallChildren">Suitable for a family with small children:</label>
+                <select id="smallChildren" name="smallChildren">
+                    <option value="">Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+                <br>
+
+                <label for="comments">Comments:</label><br>
+                <textarea id="comments" name="comments" rows="4" placeholder="Describe the pet..."></textarea>
+                <br>
+
+                <label for="ownerName">Owner's Name:</label>
+                <input type="text" id="ownerName" name="ownerName" placeholder="Your full name">
+                <br>
+
+                <label for="ownerEmail">Owner's Email:</label>
+                <input type="text" id="ownerEmail" name="ownerEmail" placeholder="Your email address">
+                <br>
+
+                <div class="button">
+                    <button type="submit">Submit</button>
+                    <button type="reset">Clear</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <%- include('footer') %>
+</div>
+</body>
+</html>

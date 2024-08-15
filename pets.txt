@@ -1,0 +1,8 @@
+1:rose:dog:labrador:puppy/kitten:male:no:yes:yes:hi:rose:rose@gmail.com
+2:rose:dog:poodle:young:female:no:yes:yes:patient:ali:ali@gmail.com
+3:rose:dog:goldenRetriever:senior:male:no:yes:no:calm:reza:reza@gmail.com
+4:rose:dog:bulldog:senior:male:no:no:yes::ali:ali@gmail.com
+5:rose:cat:siamese:young:male:no:yes:yes::ali:ali@gmail.com
+6:rose:cat:persian:puppy/kitten:male:no:yes:yes::jwdh:jhds@bhsbcd
+7:rose:cat:maineCoon:young:female:no:yes:no::wef:wdfbh@hd
+8:rose:cat:ragdoll:adult:female:no:yes:yes::wfe:wef@

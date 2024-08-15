@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Account</title>
+    <link rel="stylesheet" href="/stylesheets/Cat-Stylesheet.css">
+    <script src="/scripts/adoptPet.js" defer></script>
+</head>
+<body>
+<div class="container">
+    <h1>Create an Account</h1>
+    <form action="/register" method="POST" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <p class="description">Username can contain letters (both upper and lower case) and digits only.</p>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <p class="description">Password must be at least 4 characters long, contain at least one letter and one digit.</p>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+    <p> <a href="/">homepage</a>.</p>
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

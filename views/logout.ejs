@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout Confirmation</title>
+    <link rel="stylesheet" href="/stylesheets/Cat-Stylesheet.css">
+    <script src="/scripts/adoptPet.js" defer></script>
+</head>
+<body>
+<div class="container">
+    <!-- Include the header to maintain consistent navigation -->
+    <%- include('header') %>
+
+    <div class="content">
+        <h1>Logout</h1>
+        <p style="color: green;"><%= message %></p>
+        <p>
+            <a href="/login">Login Again</a> or <a href="/">Go to Homepage</a>
+        </p>
+    </div>
+
+    <!-- Include the footer if applicable -->
+    <%- include('footer') %>
+</div>
+</body>
+</html>

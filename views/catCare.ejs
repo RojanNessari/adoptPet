@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cat care</title>
+    <link rel="stylesheet" href="/stylesheets/Cat-Stylesheet.css">
+    <script src="/scripts/adoptPet.js" defer></script>
+</head>
+<body>
+
+<div class="container">
+    <!-- Display user's name if logged in -->
+    <% if (user) { %>
+        <div class="header">
+            <p>Welcome, <%= user %>!</p>
+        </div>
+    <% } %>
+
+    <%- include('header') %>
+
+    <main>
+        <div class="menu">
+            <ul>
+                <li class="active"><a href="/">Home page</a></li>
+                <li><a href="/findDogCat">Find a dog/cat</a></li>
+                <li><a href="/dogCare">Dog Care</a></li>
+                <li><a href="/catCare">Cat Care</a></li>
+
+                <!-- Conditional give away link -->
+                <% if (user) { %>
+                    <li><a href="/giveAway">Have a pet to give away</a></li>
+                <% } else { %>
+                    <li><a href="/login">Have a pet to give away</a></li>
+                <% } %>
+
+                <li><a href="/contactUs">Contact Us</a></li>
+
+                <!-- Conditional Create an Account link -->
+                <% if (!user) { %>
+                    <li><a href="/register">Create an account</a></li>
+                <% } %>
+
+                <!-- Conditional login/logout button -->
+                <% if (user) { %>
+                    <li><a href="/logout" style="color: red;">Logout</a></li>
+                <% } else { %>
+                    <li><a href="/login">Login</a></li>
+                <% } %>
+            </ul>
+        </div>
+        <div  class="Care">
+            <h1>Cat care </h1>
+            <section>
+                <h2>General Instructions</h2>
+                <p>
+                    Taking care of a cat involves providing a balanced diet, regular veterinary visits, proper grooming, and plenty of affection. Here are some essential tips:
+                </p>
+                <ul>
+                    <li>Feed your cat a balanced diet that is suitable for their age and health. <a href="https://www.aspca.org/pet-care/cat-care/cat-nutrition-tips">Read more about cat nutrition here</a>.</li>
+                    <li>Ensure your cat has regular veterinary check-ups to stay healthy and prevent diseases. <a href="https://www.aspca.org/pet-care/general-pet-care/veterinary-care">More about veterinary care</a>.</li>
+                    <li>Provide proper grooming to keep your cat's coat clean and healthy. <a href="https://www.petmd.com/cat/grooming/evr_ct_grooming">Cat grooming tips</a>.</li>
+                    <li>Ensure your cat has a clean litter box and knows where to find it. <a href="https://www.aspca.org/pet-care/cat-care/common-cat-behavior-issues/litter-box-problems">Litter box tips</a>.</li>
+                    <li>Provide your cat with toys and playtime to keep them mentally and physically active. <a href="https://www.petmd.com/blogs/thedailyvet/jintile/2013/july/how-to-know-your-pet-has-suffered-too-much-30532">Cat playtime tips</a>.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Useful Links</h2>
+                <ul>
+                    <li><a href="https://www.aspca.org/">ASPCA</a></li>
+                    <li><a href="https://www.petmd.com/">PetMD</a></li>
+                    <li><a href="https://www.catster.com/">Catster</a></li>
+                    <li><a href="https://www.humanesociety.org/">The Humane Society</a></li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+   <%- include('footer')%>
+</div>
+
+</body>
+</html>
